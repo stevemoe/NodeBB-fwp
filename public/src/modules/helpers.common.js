@@ -12,6 +12,7 @@ module.exports = function (utils, Benchpress, relative_path) {
 		escape,
 		stripTags,
 		generateCategoryBackground,
+		generateCategorySVGBackground,
 		generateChildrenCategories,
 		generateTopicClass,
 		membershipBtn,
@@ -100,6 +101,23 @@ module.exports = function (utils, Benchpress, relative_path) {
 			if (category.imageClass) {
 				style.push('background-size: ' + category.imageClass);
 			}
+		}
+
+		return style.join('; ') + ';';
+	}
+
+	function generateCategorySVGBackground(category) {
+		if (!category) {
+			return '';
+		}
+		const style = [];
+
+		if (category.bgColor) {
+			style.push('fill: ' + category.bgColor);
+		}
+
+		if (category.color) {
+			style.push('color: ' + category.color);
 		}
 
 		return style.join('; ') + ';';
